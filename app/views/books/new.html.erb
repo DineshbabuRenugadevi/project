@@ -1,0 +1,43 @@
+<h1>Create a New file</h1>
+
+<% if @book.errors.any? %>
+    <h2> Below errors Prevented during saving </h2>
+        <ul>
+            <% @book.errors.full_messages.each do |msg| %>
+                <li><span style = "color:red ;"> <%= msg %> </span></li>
+            <% end %>
+        </ul>
+
+<% end %>
+
+
+
+<%= form_with scope: :book, url: books_path, local: true do |f| %>
+
+    <p>
+    <%= f.label :title %> </br>
+    <%= f.text_field :title %> 
+    </p>
+
+    <p>
+    <%= f.label :description %> </br>
+    <%= f.text_area :description %> 
+    </p>
+
+    <p>
+    <%= f.label :price %> </br>
+    <%= f.text_field :price %> 
+    </p>
+
+    <p>
+    <%= f.label :count %> </br>
+    <%= f.number_field :count %> 
+    </p>
+
+    <p>
+    <%= f.submit %>  
+    </p>
+
+<% end %>
+
+<%= link_to "Return Back to Book Listing Page" , books_path %>
